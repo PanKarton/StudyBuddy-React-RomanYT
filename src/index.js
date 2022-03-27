@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
-import App from 'views/App';
+import Root from 'views/Root';
 
 console.log('czec');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Root />
   </React.StrictMode>,
   document.getElementById('root'),
 );
