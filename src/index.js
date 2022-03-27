@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'index.css';
 import App from 'views/App';
 
-console.log('czesc');
+console.log('czec');
 
 ReactDOM.render(
   <React.StrictMode>
