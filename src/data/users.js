@@ -2,7 +2,7 @@ export const users = [
   {
     name: 'Maciej Łyżwa',
     attendance: '0%',
-    average: '2.3',
+    average: '4',
   },
   {
     name: 'Katarzyna Gwóźdź',
