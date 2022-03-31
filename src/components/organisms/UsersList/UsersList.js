@@ -5,10 +5,11 @@ import { Wrapper } from './UsersList.styles';
 
 const UsersList = (props) => (
   <Wrapper>
-    {users.map((userData) => (
-      <UsersListItem key={userData.name} userData={userData}>
-        {' '}
-      </UsersListItem>
+    {users.map((userData, index) => (
+      <UsersListItem
+        key={userData.name}
+        userData={userData}
+        index={index}></UsersListItem>
     ))}
   </Wrapper>
 );

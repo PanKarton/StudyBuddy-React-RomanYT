@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
-import { Wrapper } from './UsersListItem.styles';
-import AverageCircle from 'components/atoms/AverageCircle/AverageCircle';
+import {
+  Wrapper,
+  AverageCircle,
+  UserAndAttendance,
+} from './UsersListItem.styles';
 
-const UsersListItem = ({ userData: { name, average, attendance } }) => (
+const alertMe = (index) => alert(`You deleted student #${index + 1}`);
+
+const UsersListItem = ({ index, userData: { name, average, attendance } }) => (
   <Wrapper>
-    <AverageCircle average={average}></AverageCircle>
-    <div>
+    <AverageCircle average={average}>
+      <span>{average}</span>
+    </AverageCircle>
+    <UserAndAttendance>
       <p>{name}</p>
-      <p>{attendance}</p>
-    </div>
-    <Button />
+      <p>Attendance: {attendance}</p>
+    </UserAndAttendance>
+    <Button onClick={() => alertMe(index)} />
   </Wrapper>
 );
 

@@ -1,7 +1,8 @@
 import UsersList from 'components/organisms/UsersList/UsersList';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
+import { theme } from 'assets/styles/theme';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -9,11 +10,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eee;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 `;
 
 const Root = () => (
-  <>
+  <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Helmet>
       <link
@@ -24,7 +25,7 @@ const Root = () => (
     <Wrapper>
       <UsersList />
     </Wrapper>
-  </>
+  </ThemeProvider>
 );
 
 export default Root;
