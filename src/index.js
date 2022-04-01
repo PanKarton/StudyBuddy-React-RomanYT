@@ -3,11 +3,4 @@ import ReactDOM from 'react-dom';
 import 'index.css';
 import Root from 'views/Root';
 
-console.log('czec');
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<Root />, document.getElementById('root'));
