@@ -6,6 +6,7 @@ import { Wrapper } from './UsersList.styles';
 class UsersList extends React.Component {
   state = {
     users: [],
+    isLoading: true,
   };
 
   deleteUser = (userName) => {
@@ -26,19 +27,24 @@ class UsersList extends React.Component {
   };
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     this.mockAPI()
-      .then((users) => {
-        this.setState({ users: users });
+      .then((data) => {
+        this.setState({ isLoading: false });
+        this.setState({ users: data });
       })
       .catch((err) => console.log(err));
   }
-  componentDidUpdate() {}
+  componentDidUpdate(_, prevState) {
+    if (prevState.isLoading !== this.state.isLoading) console.log(`Loading state has changed`);
+  }
   componentWillUnmount() {}
 
   render() {
     const { users } = this.state;
     return (
       <Wrapper>
+        <h1>{this.state.isLoading ? 'Loading...' : 'Users list'}</h1>
         {users.map((userData, index) => (
           <UsersListItem deleteUser={this.deleteUser} key={userData.name} userData={userData} index={index}></UsersListItem>
         ))}
