@@ -1,13 +1,14 @@
-import UsersList from 'components/organisms/UsersList/UsersList';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
 import { theme } from 'assets/styles/theme';
-import AddUserForm from 'components/organisms/AddUserForm/AddUserForm';
 import { StyledWrapper } from './Root.styles';
 import { usersData } from 'data/usersData';
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
+import AddUser from './AddUser';
+import Dashboard from './Dashboard';
 
 const initialState = {
   name: '',
@@ -42,12 +43,17 @@ const Root = () => {
         <Helmet>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
         </Helmet>
-        <StyledWrapper>
-          <Routes>
-            <Route path="/" element={<AddUserForm newUserInputData={newUserInputData} handleInputChange={handleInputChange} addUser={addUser} />} />
-            <Route path="/addUser" element={<UsersList users={users} deleteUser={deleteUser} />} />
-          </Routes>
-        </StyledWrapper>
+        <MainTemplate>
+          <StyledWrapper>
+            <Routes>
+              <Route path="/" element={<Dashboard users={users} deleteUser={deleteUser} />} />
+              <Route
+                path="/addStudent"
+                element={<AddUser newUserInputData={newUserInputData} handleInputChange={handleInputChange} addUser={addUser} />}
+              />
+            </Routes>
+          </StyledWrapper>
+        </MainTemplate>
       </ThemeProvider>
     </Router>
   );

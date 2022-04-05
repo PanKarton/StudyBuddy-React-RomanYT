@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CircleButton from 'components/atoms/CircleButton/CircleButton';
 import { Wrapper, AverageCircle, UserAndAttendance } from './UsersListItem.styles';
+import { UserShape } from 'types';
 
 const UsersListItem = ({ deleteUser, userData: { name, average, attendance } }) => (
   <Wrapper>
@@ -17,11 +18,8 @@ const UsersListItem = ({ deleteUser, userData: { name, average, attendance } }) 
 );
 
 UsersListItem.propTypes = {
-  userData: PropTypes.shape({
-    name: PropTypes.string,
-    attendance: PropTypes.string.isRequired,
-    average: PropTypes.string,
-  }),
+  userData: PropTypes.shape(UserShape),
+  deleteUser: PropTypes.func.isRequired,
 };
 
 export default UsersListItem;

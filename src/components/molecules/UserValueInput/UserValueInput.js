@@ -6,11 +6,17 @@ import { StyledWrapper } from './UserValueInput.styles';
 
 const UserValueInput = ({ name, id, type, value, handleInputChange }) => (
   <StyledWrapper>
-    <Label htmlFor={id}>{name}</Label>
+    <Label htmlFor={id}>{id}</Label>
     <Input name={name} id={id} type={type} value={value} onChange={handleInputChange}></Input>
   </StyledWrapper>
 );
 
-UserValueInput.propTypes = {};
+UserValueInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+};
 
 export default UserValueInput;
