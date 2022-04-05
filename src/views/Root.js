@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
 import { theme } from 'assets/styles/theme';
+import AddUserForm from 'components/organisms/AddUserForm/AddUserForm';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -17,12 +18,10 @@ const Root = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Helmet>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
     </Helmet>
     <Wrapper>
+      <AddUserForm />
       <UsersList />
     </Wrapper>
   </ThemeProvider>

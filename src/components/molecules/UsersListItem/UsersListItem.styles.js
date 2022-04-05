@@ -35,7 +35,7 @@ export const UserAndAttendance = styled.div`
   gap: 0.25rem;
   p {
     margin: 0;
-    color: ${({ theme }) => theme.colors.darkerGrey};
+    color: ${({ theme }) => theme.colors.darkGrey};
   }
   p:first-child {
     font-weight: 700;
