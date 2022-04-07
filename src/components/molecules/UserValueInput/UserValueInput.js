@@ -4,7 +4,7 @@ import { Input } from 'components/atoms/Input/Input';
 import { Label } from 'components/atoms/Label/Label';
 import { StyledWrapper } from './UserValueInput.styles';
 
-const UserValueInput = ({ name, id, type, value, handleInputChange }) => (
+const UserValueInput = ({ name, id, type = 'text', value, handleInputChange }) => (
   <StyledWrapper>
     <Label htmlFor={id}>{id}</Label>
     <Input name={name} id={id} type={type} value={value} onChange={handleInputChange}></Input>
@@ -14,7 +14,7 @@ const UserValueInput = ({ name, id, type, value, handleInputChange }) => (
 UserValueInput.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   value: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
 };

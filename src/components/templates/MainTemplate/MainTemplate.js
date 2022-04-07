@@ -10,4 +10,8 @@ const MainTemplate = ({ children }) => (
   </Wrapper>
 );
 
+MainTemplate.propTypes = {
+  children: PropTypes.element,
+};
+
 export default MainTemplate;
