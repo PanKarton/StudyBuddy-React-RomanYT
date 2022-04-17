@@ -6,7 +6,7 @@ import { theme } from 'assets/styles/theme';
 import { StyledWrapper } from './Root.styles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import AddUser from './AddUser';
+import AddUser from './AddUser/AddUser';
 import Dashboard from './Dashboard';
 import UsersProvider from 'providers/UsersProvider';
 

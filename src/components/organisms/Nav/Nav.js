@@ -12,8 +12,8 @@ const Nav = ({ studentsListLink, addStudentLink }) => (
     <StyledList>
       <StyledLink to="/">Dashboard</StyledLink>
       <StyledLink to="/addStudent">Add student</StyledLink>
-      {/* <StyledLink to="/">Settings</StyledLink>
-      <StyledLink to="/">Logout</StyledLink> */}
+      <StyledLink to="/">Settings</StyledLink>
+      <StyledLink to="/">Logout</StyledLink>
     </StyledList>
   </StyledNav>
 );
