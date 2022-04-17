@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Nav from 'components/organisms/Nav/Nav';
-import { Wrapper } from './MainTemplate.styles';
+import { StyledMain, Wrapper } from './MainTemplate.styles';
+import SearchBar from '../../organisms/SearchBar/SearchBar';
+import News from 'views/News/News';
 
 const MainTemplate = ({ children }) => (
   <Wrapper>
     <Nav />
-    {children}
+    <StyledMain>
+      <SearchBar />
+      {children}
+      <News />
+    </StyledMain>
   </Wrapper>
 );
 

@@ -11,6 +11,8 @@ export const StyledNav = styled.nav`
   justify-content: flex-start;
   align-items: flex-end;
   gap: 3rem;
+  grid-column: 1/2;
+  grid-row: 1/3;
 `;
 
 export const StyledList = styled.ul`
