@@ -41,8 +41,7 @@ const News = (props) => {
         },
       )
       .catch((err) => {
-        console.log(err);
-        setError(`Couldn't load articles.`);
+        setError(`Sorry, couldn't load articles.`);
       });
   }, []);
 
