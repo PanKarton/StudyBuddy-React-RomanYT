@@ -10,9 +10,8 @@ export const StyledWrapper = styled.div`
   align-items: center;
   gap: 3rem;
   padding-left: 3rem;
-
   ${Input} {
-    width: min(100%, 30rem);
+    width: 100%;
     height: 2.75rem;
     border-color: ${({ theme }) => theme.colors.mainLineColor};
     padding-left: 1rem;

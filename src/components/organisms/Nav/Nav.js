@@ -10,10 +10,10 @@ const Nav = ({ studentsListLink, addStudentLink }) => (
       <h1>Study Buddy</h1>
     </MainLogo>
     <StyledList>
-      <StyledLink to="/">Dashboard</StyledLink>
+      <StyledLink to="/group">Dashboard</StyledLink>
       <StyledLink to="/addStudent">Add student</StyledLink>
-      <StyledLink to="/">Settings</StyledLink>
-      <StyledLink to="/">Logout</StyledLink>
+      <StyledLink to="/asdasd">Settings</StyledLink>
+      <StyledLink to="/gdfg">Logout</StyledLink>
     </StyledList>
   </StyledNav>
 );
