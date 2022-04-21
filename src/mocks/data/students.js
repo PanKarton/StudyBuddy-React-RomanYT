@@ -125,4 +125,18 @@ export const students = [
     average: '4.9',
     group: 'C',
   },
+  {
+    id: '19',
+    name: 'Miriamcia Łagód',
+    attendance: '100%',
+    average: '6',
+    group: 'D',
+  },
+  {
+    id: '20',
+    name: 'Aru debil',
+    attendance: '0%',
+    average: '3.5',
+    group: 'D',
+  },
 ];

@@ -37,3 +37,11 @@ export const UserInfo = styled.div`
     font-size: ${({ theme }) => theme.fontSize.xl};
   }
 `;
+
+export const SearchWrapper = styled.div`
+  width: min(100%, 30rem);
+  position: relative;
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  color: ${({ theme }) => theme.colors.darkGrey};
+`;
