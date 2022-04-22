@@ -11,6 +11,6 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.darkGrey};
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.lightPurpleHover};
   }
 `;

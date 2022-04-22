@@ -5,7 +5,7 @@ import { StyledList } from './UsersList.styles';
 import { StyledTitle } from 'components/atoms/Title/Title';
 import { UsersContext } from 'providers/UsersProvider';
 
-const UsersList = ({ users }) => {
+const UsersList = ({ users = [] }) => {
   const context = useContext(UsersContext);
 
   return (
@@ -21,7 +21,7 @@ const UsersList = ({ users }) => {
 };
 
 UsersList.propTypes = {
-  users: PropTypes.array.isRequired,
+  users: PropTypes.array,
 };
 
 export default UsersList;
