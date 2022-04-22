@@ -6,12 +6,15 @@ import { Link, useParams } from 'react-router-dom';
 import { GroupButton, GroupWrapper, MainContainer, StyledHeader } from './DashBoard.styles';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import { GroupContext } from 'providers/ActualGroupProvider';
+import Modal from 'components/organisms/Modal/Modal';
+import GroupModal from 'components/organisms/GroupModal/GroupModal';
 
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
   const { groupID } = useParams();
   const { handleGroupChange } = useContext(GroupContext);
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     axios
@@ -26,7 +29,7 @@ const Dashboard = () => {
       .then(({ data }) => setStudents(data.students))
       .catch((err) => console.log(err));
     handleGroupChange(groupID);
-  }, [groupID, groups]);
+  }, [groupID, groups, handleGroupChange]);
 
   return (
     <MainContainer>
@@ -35,11 +38,9 @@ const Dashboard = () => {
         <GroupButton>
           Change group <RiArrowRightSLine />
         </GroupButton>
-        {groups.map((group) => (
-          <Link key={group} to={`/group/${group}?`}>
-            {group}
-          </Link>
-        ))}
+        <Modal isOpen={isOpen}>
+          <GroupModal groups={groups} />
+        </Modal>
       </GroupWrapper>
       <ViewWrapper>
         <UsersList users={students} />

@@ -6,6 +6,7 @@ export const GroupWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
 `;
 
 export const StyledHeader = styled.h4`
