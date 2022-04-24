@@ -24,8 +24,9 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    console.log(groupID);
     axios
-      .get(`/students/${groupID === ':groupID' ? groups[0] : groupID}`)
+      .get(`/students/${groupID === undefined ? groups[0] : groupID}`)
       .then(({ data }) => setStudents(data.students))
       .catch((err) => console.log(err));
     handleGroupChange(groupID);
@@ -39,7 +40,7 @@ const Dashboard = () => {
     <>
       <MainContainer>
         <GroupWrapper>
-          <StyledHeader>{`Group ${groupID === ':groupID' ? groups[0] : groupID}`}</StyledHeader>
+          <StyledHeader>{`Group ${groupID === undefined ? groups[0] : groupID}`}</StyledHeader>
           <GroupButton onClick={handleModalToggle}>
             Change group <RiArrowRightSLine />
           </GroupButton>
