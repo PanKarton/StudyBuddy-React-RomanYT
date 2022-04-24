@@ -4,7 +4,7 @@ import CircleButton from 'components/atoms/CircleButton/CircleButton';
 import { Wrapper, AverageCircle, UserAndAttendance } from './UsersListItem.styles';
 import { UserShape } from 'types';
 
-const UsersListItem = ({ deleteUser, userData: { name, average, attendance } }) => (
+const UsersListItem = ({ userData: { name, average, attendance } }) => (
   <Wrapper>
     <AverageCircle average={average}>
       <span>{average}</span>
@@ -13,7 +13,7 @@ const UsersListItem = ({ deleteUser, userData: { name, average, attendance } }) 
       <p>{name}</p>
       <p>Attendance: {attendance}</p>
     </UserAndAttendance>
-    <CircleButton onClick={() => deleteUser(name)} />
+    <CircleButton />
   </Wrapper>
 );
 

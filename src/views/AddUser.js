@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { ViewWrapper } from 'components/atoms/ViewWrapper/ViewWrapper';
 import UserValueInput from 'components/molecules/UserValueInput/UserValueInput';
 import { Button } from 'components/atoms/Button/Button';
 import { StyledTitle } from 'components/atoms/Title/Title';
-import { UsersContext } from 'providers/UsersProvider';
 
 const initialState = {
   name: '',
@@ -11,11 +10,11 @@ const initialState = {
   average: '',
 };
 
+const a = 2;
+
 const AddUser = () => {
   const [newUserInputData, setNewUserInputData] = useState(initialState);
   const { name, attendance, average } = newUserInputData;
-
-  const context = useContext(UsersContext);
 
   const handleInputChange = (e) => {
     setNewUserInputData({
@@ -27,7 +26,6 @@ const AddUser = () => {
   const handleSubmitUser = (e) => {
     e.preventDefault();
 
-    context.addUser(newUserInputData);
     setNewUserInputData(initialState);
   };
 

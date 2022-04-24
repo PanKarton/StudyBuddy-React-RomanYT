@@ -1,4 +1,3 @@
-import { groups } from 'mocks/data/groups';
 import React, { useState } from 'react';
 
 export const GroupContext = React.createContext({
