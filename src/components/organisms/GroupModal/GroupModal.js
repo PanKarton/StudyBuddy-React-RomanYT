@@ -20,13 +20,8 @@ const GroupModal = ({ groups = [], handleModalToggle }) => {
         ))}
       </GroupList>
       {selectedGroup ? (
-        <Link to={`/group/${selectedGroup}`}>
-          <Button
-            onClick={() => {
-              handleModalToggle();
-            }}>
-            Select
-          </Button>
+        <Link to={`/group/${selectedGroup}?`}>
+          <Button onClick={() => handleModalToggle()}>Select</Button>
         </Link>
       ) : null}
     </StyledWrapper>
