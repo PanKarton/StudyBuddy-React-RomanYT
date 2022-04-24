@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
@@ -6,13 +6,11 @@ import { theme } from 'assets/styles/theme';
 import { StyledWrapper } from './Root.styles';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import AddUser from './AddUser/AddUser';
+import AddUser from './AddUserForm/AddUserForm';
 import Dashboard from './Dashboard/Dashboard';
-import ActualGroupProvider, { GroupContext } from 'providers/ActualGroupProvider';
+import ActualGroupProvider from 'providers/ActualGroupProvider';
 
 const Root = () => {
-  const { actualGroup } = useContext(GroupContext);
-
   return (
     <Router>
       <ThemeProvider theme={theme}>

@@ -1,9 +1,8 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { ViewWrapper } from 'components/atoms/ViewWrapper/ViewWrapper';
 import UserValueInput from 'components/molecules/UserValueInput/UserValueInput';
 import { Button } from 'components/atoms/Button/Button';
 import { StyledTitle } from 'components/atoms/Title/Title';
-import { UsersContext } from 'providers/UsersProvider';
 
 const initialFormState = {
   name: '',
@@ -47,7 +46,6 @@ const reducer = (state, action) => {
 const AddUser = () => {
   const [formValues, dispatch] = useReducer(reducer, initialFormState);
   const { name, attendance, average } = formValues;
-  const context = useContext(UsersContext);
 
   const handleInputChange = (e) => {
     dispatch({ type: 'INPUT CHANGE', field: e.target.name, value: e.target.value });
@@ -56,7 +54,6 @@ const AddUser = () => {
   const handleSubmitUser = (e) => {
     e.preventDefault();
     if (formValues) if (!formValues.consent) return dispatch({ type: 'ERROR UPDATE', err: 'Cannot add student without terms consent' });
-    context.addUser(formValues);
     dispatch({ type: 'INPUT CLEAR' });
   };
 
