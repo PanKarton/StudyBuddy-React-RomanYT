@@ -4,6 +4,6 @@ import 'index.css';
 import Root from 'views/Root';
 import { worker } from 'mocks/browser';
 
-worker.start();
-
-ReactDOM.render(<Root />, document.getElementById('root'));
+worker.start().then(() => {
+  ReactDOM.render(<Root />, document.getElementById('root'));
+});

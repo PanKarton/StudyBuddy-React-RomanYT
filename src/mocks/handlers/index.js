@@ -13,11 +13,8 @@ export const handlers = [
     }
     return res(ctx.status(200), ctx.json({ students }));
   }),
-  rest.get('/students/name/:name?', (req, res, ctx) => {
-    if (req.params.name) {
-      const filteredStudents = students.filter((student) => student.name.toLowerCase().includes(req.params.name.toLowerCase()));
-      return res(ctx.status(200), ctx.json({ students: filteredStudents }));
-    }
-    return res(ctx.status(200), ctx.json({ students }));
+  rest.post('/students/search', (req, res, ctx) => {
+    const matchingStudents = req.body.searchPhrase ? students.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase())) : [];
+    return res(ctx.status(200), ctx.json({ students: matchingStudents }));
   }),
 ];

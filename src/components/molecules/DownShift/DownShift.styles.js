@@ -11,7 +11,9 @@ export const StyledWrapper = styled.div`
   background-color: white;
   border-radius: 25px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-y: overlay;
+  max-height: 40vh;
   & > * + *::after {
     content: '';
     position: absolute;

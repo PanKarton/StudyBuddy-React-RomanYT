@@ -1,22 +1,33 @@
 import { Input } from 'components/atoms/Input/Input';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { SearchWrapper, StyledWrapper, UserInfo } from './SearchBar.styles';
 import DownShift from 'components/molecules/DownShift/DownShift';
-import axios from 'axios';
+import { useStudents } from 'hooks/useStudents';
+import debounce from 'lodash.debounce';
 
-const SearchBar = (props) => {
-  const [searchValue, setSearchVaue] = useState('');
+const SearchBar = () => {
+  const [searchPhrase, setSearchPhrase] = useState('');
   const [students, setStudents] = useState([]);
+  const { findStudents } = useStudents();
+
+  // useCallback trzeba uzyc, bo za każdym re-renderem getMatchingStudents pojawia sie od nowa, bo komponent sie rerenderuje razem z funkcją, która tworzy sie za kazdym razem
+
+  const getMatchingStudents = useMemo(
+    () =>
+      debounce(async (inputValue) => {
+        const { students } = await findStudents(inputValue);
+        setStudents(students);
+      }, 500),
+    [],
+  );
 
   useEffect(() => {
-    axios
-      .get(`/students/name/${searchValue}`)
-      .then(({ data }) => setStudents(data.students))
-      .catch((err) => console.log(err));
-  }, [searchValue]);
+    if (!searchPhrase) return;
+    getMatchingStudents(searchPhrase);
+  }, [searchPhrase, getMatchingStudents]);
 
   const handleInputChange = (e) => {
-    setSearchVaue(e.target.value);
+    setSearchPhrase(e.target.value);
   };
 
   return (
@@ -28,8 +39,8 @@ const SearchBar = (props) => {
         </p>
       </UserInfo>
       <SearchWrapper>
-        <Input placeholder="Find student..." value={searchValue} onChange={handleInputChange} />
-        <DownShift students={students} />
+        <Input placeholder="Find student..." value={searchPhrase} onChange={handleInputChange} />
+        (searchPhrase && students ? <DownShift students={students} />: null)
       </SearchWrapper>
     </StyledWrapper>
   );

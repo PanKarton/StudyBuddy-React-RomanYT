@@ -40,9 +40,6 @@ export const GroupList = styled.ul`
       text-decoration: none;
       color: ${({ theme }) => theme.colors.darkGrey};
       font-size: ${({ theme }) => theme.fontSize.xl};
-      &:active {
-        color: red;
-      }
     }
   }
 `;
