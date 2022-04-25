@@ -45,3 +45,51 @@ export const SearchWrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSize.l};
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
+
+export const SearchResults = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.mainLineColor};
+  border-top: transparent;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow-y: scroll;
+  overflow-y: overlay;
+  max-height: 40vh;
+  & > * + *::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50%);
+    width: calc(100% - 2rem);
+    height: 0;
+    transform: translateX(-50%);
+    border-top: 1px solid ${({ theme }) => theme.colors.mainLineColor};
+  }
+`;
+export const UserCell = styled.li`
+  width: inherit;
+  background-color: ${({ theme, isHighlighted }) => (isHighlighted ? theme.colors.lightGrey : theme.colors.white)};
+  padding-inline: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+  }
+  &:first-child {
+    padding-top: 1rem;
+  }
+  &:last-child {
+    padding-bottom: 1rem;
+  }
+`;

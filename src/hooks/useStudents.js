@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useCallback } from 'react';
 
 export const useStudents = () => {
+  // Bez useCallback komponent renderując się wchodziłby do tego pliczku i za każdym razem
+  // zwracał nową funkcję, co by odpalało useEffect i tak w koło macieju
   const getGroups = useCallback(async () => {
     try {
       const response = await axios.get(`/groups`);
