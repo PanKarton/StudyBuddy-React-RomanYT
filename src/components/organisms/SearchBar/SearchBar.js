@@ -1,34 +1,27 @@
 import { Input } from 'components/atoms/Input/Input';
-import React, { useEffect, useMemo, useState } from 'react';
-import { SearchWrapper, StyledWrapper, UserInfo } from './SearchBar.styles';
-import DownShift from 'components/molecules/DownShift/DownShift';
+import React, { useState } from 'react';
+import { SearchResults, SearchWrapper, StyledWrapper, UserCell, UserInfo } from './SearchBar.styles';
 import { useStudents } from 'hooks/useStudents';
 import debounce from 'lodash.debounce';
+import { useCombobox } from 'downshift';
 
 const SearchBar = () => {
-  const [searchPhrase, setSearchPhrase] = useState('');
-  const [students, setStudents] = useState([]);
+  const [matchingStudents, setMatchingStudents] = useState([]);
   const { findStudents } = useStudents();
 
+  const itemToString = (item) => (item ? item.name : '');
+
   // useCallback trzeba uzyc, bo za każdym re-renderem getMatchingStudents pojawia sie od nowa, bo komponent sie rerenderuje razem z funkcją, która tworzy sie za kazdym razem
+  const getMatchingStudents = debounce(async ({ inputValue }) => {
+    const { students } = await findStudents(inputValue);
+    setMatchingStudents(students);
+  }, 500);
 
-  const getMatchingStudents = useMemo(
-    () =>
-      debounce(async (inputValue) => {
-        const { students } = await findStudents(inputValue);
-        setStudents(students);
-      }, 500),
-    [],
-  );
-
-  useEffect(() => {
-    if (!searchPhrase) return;
-    getMatchingStudents(searchPhrase);
-  }, [searchPhrase, getMatchingStudents]);
-
-  const handleInputChange = (e) => {
-    setSearchPhrase(e.target.value);
-  };
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
+    items: matchingStudents,
+    itemToString,
+    onInputValueChange: getMatchingStudents,
+  });
 
   return (
     <StyledWrapper>
@@ -38,9 +31,16 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </UserInfo>
-      <SearchWrapper>
-        <Input placeholder="Find student..." value={searchPhrase} onChange={handleInputChange} />
-        (searchPhrase && students ? <DownShift students={students} />: null)
+      <SearchWrapper {...getComboboxProps()}>
+        <Input placeholder="Find student..." name="Search" id="Search" {...getInputProps()} />
+        <SearchResults {...getMenuProps()}>
+          {isOpen &&
+            matchingStudents.map((item, index) => (
+              <UserCell key={item.id} {...getItemProps({ item, index })} isHighlighted={highlightedIndex === index}>
+                {item.name}
+              </UserCell>
+            ))}
+        </SearchResults>
       </SearchWrapper>
     </StyledWrapper>
   );

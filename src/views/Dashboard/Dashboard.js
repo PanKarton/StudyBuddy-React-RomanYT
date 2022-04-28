@@ -21,7 +21,7 @@ const Dashboard = () => {
       const data = await getGroups();
       setGroups(data);
     })();
-  }, [setGroups, getGroups]);
+  }, [getGroups]);
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);

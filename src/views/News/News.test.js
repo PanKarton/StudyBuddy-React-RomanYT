@@ -2,8 +2,7 @@ import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import News from './News';
-import { renderWithProviders } from 'helpers/RenderWithProviders';
-import { screen } from '@testing-library/react';
+import { render, screen } from 'test-utils';
 
 const mock = new MockAdapter(axios, { onNoMatch: 'throwException' });
 
@@ -29,7 +28,7 @@ describe('News Section', () => {
 
   it('Displays error when articles are not loaded corectly', async () => {
     mock.onPost('https://graphql.datocms.com/', { query }).reply(500);
-    renderWithProviders(<News />);
+    render(<News />);
     await screen.findByText(/Sorry/);
   });
 });
