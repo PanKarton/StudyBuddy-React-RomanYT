@@ -5,6 +5,7 @@ import { StyledTitle } from 'components/atoms/Title/Title';
 import { useParams } from 'react-router-dom';
 import { GroupContext } from 'providers/ActualGroupProvider';
 import { useStudents } from 'hooks/useStudents';
+import Modal from '../Modal/Modal';
 
 const UsersList = () => {
   const [students, setStudents] = useState([]);
