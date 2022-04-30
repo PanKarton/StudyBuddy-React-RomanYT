@@ -12,7 +12,7 @@ const UsersList = () => {
   const [students, setStudents] = useState([]);
   const { handleGroupChange } = useContext(GroupContext);
   const { groupID } = useParams();
-  const { getStudents } = useStudents();
+  const { getStudents, getStudentByID } = useStudents();
   const { Modal, isModalOpen, handleModalClose, handleModalOpen } = useModal();
   const [modalStudent, setModalStudent] = useState({});
 
@@ -31,9 +31,10 @@ const UsersList = () => {
     };
   }, [groupID, handleGroupChange, getStudents]);
 
-  const handleUserClick = (student) => {
+  const handleUserClick = async (id) => {
+    const studentInfo = await getStudentByID(id);
+    setModalStudent(studentInfo);
     handleModalOpen();
-    setModalStudent(student);
   };
 
   return (
@@ -41,12 +42,12 @@ const UsersList = () => {
       <StyledTitle>Users list</StyledTitle>
       <StyledList>
         {students.map((student, index) => (
-          <UsersListItem key={index} userData={student} onClick={() => handleUserClick(student)}></UsersListItem>
+          <UsersListItem key={index} userData={student} onClick={() => handleUserClick(student.id)}></UsersListItem>
         ))}
       </StyledList>
       {isModalOpen ? (
         <Modal>
-          <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} studentInfo={modalStudent} />
+          <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} student={modalStudent} />
         </Modal>
       ) : null}
     </>

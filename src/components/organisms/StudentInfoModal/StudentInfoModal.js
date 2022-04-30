@@ -6,7 +6,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { CourseInfo, StudentInfo, StyledSectionTitle, StyledWrapper } from './StudentInfoModal.styles';
 import GradesList from 'components/molecules/GradesList/GradesList';
 
-const StudentInfoModal = ({ isCloseButtonNeeded = true, handleModalClose, studentInfo: { name, average } }) => (
+const StudentInfoModal = ({ isCloseButtonNeeded = true, handleModalClose, student: { name, average } }) => (
   <StyledWrapper>
     <StudentInfo>
       <AverageCircle average={average}>
