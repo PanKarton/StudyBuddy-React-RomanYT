@@ -13,7 +13,10 @@ export const ModalWindow = styled.div`
 `;
 
 export const ModalWrapper = styled(ViewWrapper)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem 0;
-  width: min(25rem, 100%);
   max-height: 70vh;
+  width: auto;
 `;

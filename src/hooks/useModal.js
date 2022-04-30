@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Modal from 'components/organisms/Modal/Modal';
+import Modal from 'components/molecules/Modal/Modal';
 
 export const useModal = (initialState = false) => {
   const [isModalOpen, setisModalOpen] = useState(initialState);

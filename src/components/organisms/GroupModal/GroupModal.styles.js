@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
+  width: 25rem;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +30,7 @@ export const GroupList = styled.ul`
   overflow-y: scroll;
   overflow-y: overlay;
   max-height: 40vh;
+
   li {
     padding-block: 0.5rem;
     width: 100%;
