@@ -9,28 +9,6 @@ import { useModal } from 'hooks/useModal';
 import StudentInfoModal from '../StudentInfoModal/StudentInfoModal';
 import Modal from 'components/molecules/Modal/Modal';
 
-const mockStudent = {
-  id: '19',
-  name: 'Miriamcia Łagód',
-  attendance: '100%',
-  average: '6',
-  course: 'Inżynier społeczny w 30 dni',
-  subjectsGrades: [
-    {
-      subject: 'Majma i sen',
-      grade: '5',
-    },
-    {
-      subject: 'Historia spułczesna',
-      grade: '3.5',
-    },
-    {
-      subject: 'Astrologia i minerały',
-      grade: '2.5',
-    },
-  ],
-};
-
 const UsersList = () => {
   const [students, setStudents] = useState([]);
   const { handleGroupChange } = useContext(GroupContext);
@@ -69,7 +47,7 @@ const UsersList = () => {
         ))}
       </StyledList>
       <Modal handleModalClose={handleModalClose} isOpen={isModalOpen}>
-        <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} student={mockStudent} />
+        <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} student={modalStudent} />
       </Modal>
     </>
   );
