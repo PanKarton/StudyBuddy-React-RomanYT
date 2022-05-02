@@ -4,8 +4,8 @@ import CircleButton from 'components/atoms/CircleButton/CircleButton';
 import { Wrapper, AverageCircle, UserAndAttendance } from './UsersListItem.styles';
 import { UserShape } from 'types';
 
-const UsersListItem = ({ userData: { name, average, attendance } }) => (
-  <Wrapper>
+const UsersListItem = ({ userData: { name, average, attendance }, ...props }) => (
+  <Wrapper {...props}>
     <AverageCircle average={average}>
       <span>{average}</span>
     </AverageCircle>

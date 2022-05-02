@@ -7,6 +7,10 @@ export const Wrapper = styled.li`
   gap: 1rem;
   width: auto;
   padding: 1.25rem 0;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+  }
 `;
 
 export const AverageCircle = styled.div`

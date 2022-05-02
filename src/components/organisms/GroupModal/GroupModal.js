@@ -5,7 +5,7 @@ import { StyledHeader } from 'views/Dashboard/DashBoard.styles';
 import { GroupList, StyledWrapper } from './GroupModal.styles';
 import { Link } from 'react-router-dom';
 
-const GroupModal = ({ groups = [], handleModalToggle }) => {
+const GroupModal = ({ groups = [], handleModalClose, isCloseButtonNeeded }) => {
   const [selectedGroup, setSelectedGroup] = useState('');
 
   return (
@@ -21,9 +21,10 @@ const GroupModal = ({ groups = [], handleModalToggle }) => {
       </GroupList>
       {selectedGroup ? (
         <Link to={`/group/${selectedGroup}?`}>
-          <Button onClick={() => handleModalToggle()}>Select</Button>
+          <Button onClick={handleModalClose}>Select</Button>
         </Link>
       ) : null}
+      {isCloseButtonNeeded ? <Button onClick={handleModalClose}>Close</Button> : null}
     </StyledWrapper>
   );
 };

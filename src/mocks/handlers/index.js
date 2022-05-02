@@ -7,10 +7,20 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ groups }));
   }),
 
-  rest.get('/students/:groupID?', (req, res, ctx) => {
-    if (req.params.groupID) {
-      const filteredStudents = students.filter((student) => student.group === req.params.groupID);
+  rest.get('/groups/:id?', (req, res, ctx) => {
+    if (req.params.id) {
+      const filteredStudents = students.filter((student) => student.group === req.params.id);
+      if (filteredStudents === 0) return;
       return res(ctx.status(200), ctx.json({ students: filteredStudents }));
+    }
+    return res(ctx.status(200), ctx.json({ students }));
+  }),
+
+  rest.get('/students/:id?', (req, res, ctx) => {
+    if (req.params.id) {
+      const filteredStudent = students.find((student) => student.id === req.params.id);
+      if (!filteredStudent) return;
+      return res(ctx.status(200), ctx.json({ student: filteredStudent }));
     }
     return res(ctx.status(200), ctx.json({ students }));
   }),
