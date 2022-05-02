@@ -1,16 +1,17 @@
 import { Button } from 'components/atoms/Button/Button';
+import { ViewWrapper } from 'components/atoms/ViewWrapper/ViewWrapper';
 import { AverageCircle } from 'components/molecules/UsersListItem/UsersListItem.styles';
 import styled from 'styled-components';
 
-export const StyledWrapper = styled.section`
-  padding-inline: 4rem;
-  padding-top: 1.5rem;
+export const StyledWrapper = styled(ViewWrapper)`
+  padding-inline: 3rem;
+  padding-top: 2rem;
   padding-bottom: 3rem;
   width: 40rem;
   height: 70vh;
   position: relative;
   color: ${({ theme }) => theme.colors.darkGrey};
-
+  background-color: ${({ theme }) => theme.colors.white};
   ${Button} {
     position: absolute;
     left: 50%;

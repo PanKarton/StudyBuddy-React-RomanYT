@@ -1,24 +1,14 @@
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalWindow, ModalWrapper } from './Modal.styles';
+import { ModalWrapper } from './Modal.styles';
 
-const modalContainer = document.getElementById('portal');
+ModalWrapper.setAppElement(document.getElementById('root'));
 
-const Modal = ({ children }) => {
-  const modalNode = document.createElement('div');
-  useEffect(() => {
-    modalContainer.appendChild(modalNode);
-    return () => {
-      modalContainer.removeChild(modalNode);
-    };
-  }, [modalNode]);
-
-  return createPortal(
-    <ModalWindow>
-      <ModalWrapper>{children}</ModalWrapper>
-    </ModalWindow>,
-    modalContainer,
+const Modal = ({ children, isOpen, handleModalClose }) => {
+  return (
+    <ModalWrapper isOpen={isOpen} onRequestClose={handleModalClose}>
+      {children}
+    </ModalWrapper>
   );
 };
 

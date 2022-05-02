@@ -7,7 +7,7 @@ export const useModal = (initialState = false) => {
   const handleModalOpen = () => {
     setisModalOpen(true);
   };
-  const handleModalClose = () => {
+  const handleModalClose = (e) => {
     setisModalOpen(false);
   };
 

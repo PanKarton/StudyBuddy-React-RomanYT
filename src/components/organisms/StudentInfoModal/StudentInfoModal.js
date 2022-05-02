@@ -6,7 +6,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { CourseInfo, StudentInfo, StyledSectionTitle, StyledWrapper } from './StudentInfoModal.styles';
 import GradesList from 'components/molecules/GradesList/GradesList';
 
-const StudentInfoModal = ({ isCloseButtonNeeded = true, handleModalClose, student: { name, average } }) => (
+const StudentInfoModal = ({ isCloseButtonNeeded = true, handleModalClose, student: { name, average, course, subjectsGrades } }) => (
   <StyledWrapper>
     <StudentInfo>
       <AverageCircle average={average}>
@@ -20,9 +20,9 @@ const StudentInfoModal = ({ isCloseButtonNeeded = true, handleModalClose, studen
         <StyledSectionTitle>
           <strong>Course:</strong>
         </StyledSectionTitle>
-        <p>Economy and finances</p>
+        <p>{course}</p>
       </CourseInfo>
-      <GradesList />
+      <GradesList subjectsGrades={subjectsGrades} />
       {isCloseButtonNeeded ? <Button onClick={handleModalClose}>Close</Button> : null}
     </div>
   </StyledWrapper>

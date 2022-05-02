@@ -1,22 +1,15 @@
-import { ViewWrapper } from 'components/atoms/ViewWrapper/ViewWrapper';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
-export const ModalWindow = styled.div`
+export const ModalWrapper = styled(Modal)`
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsla(0, 0%, 0%, 0.25);
-  z-index: 1000;
-`;
-
-export const ModalWrapper = styled(ViewWrapper)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
-  max-height: 70vh;
-  width: auto;
+  &:focus {
+    outline: none;
+  }
 `;

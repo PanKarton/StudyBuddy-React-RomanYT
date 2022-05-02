@@ -7,13 +7,36 @@ import { GroupContext } from 'providers/ActualGroupProvider';
 import { useStudents } from 'hooks/useStudents';
 import { useModal } from 'hooks/useModal';
 import StudentInfoModal from '../StudentInfoModal/StudentInfoModal';
+import Modal from 'components/molecules/Modal/Modal';
+
+const mockStudent = {
+  id: '19',
+  name: 'Miriamcia Łagód',
+  attendance: '100%',
+  average: '6',
+  course: 'Inżynier społeczny w 30 dni',
+  subjectsGrades: [
+    {
+      subject: 'Majma i sen',
+      grade: '5',
+    },
+    {
+      subject: 'Historia spułczesna',
+      grade: '3.5',
+    },
+    {
+      subject: 'Astrologia i minerały',
+      grade: '2.5',
+    },
+  ],
+};
 
 const UsersList = () => {
   const [students, setStudents] = useState([]);
   const { handleGroupChange } = useContext(GroupContext);
   const { groupID } = useParams();
   const { getStudents, getStudentByID } = useStudents();
-  const { Modal, isModalOpen, handleModalClose, handleModalOpen } = useModal();
+  const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
   const [modalStudent, setModalStudent] = useState({});
 
   useEffect(() => {
@@ -45,11 +68,9 @@ const UsersList = () => {
           <UsersListItem key={index} userData={student} onClick={() => handleUserClick(student.id)}></UsersListItem>
         ))}
       </StyledList>
-      {isModalOpen ? (
-        <Modal>
-          <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} student={modalStudent} />
-        </Modal>
-      ) : null}
+      <Modal handleModalClose={handleModalClose} isOpen={isModalOpen}>
+        <StudentInfoModal isCloseButtonNeeded handleModalClose={handleModalClose} student={mockStudent} />
+      </Modal>
     </>
   );
 };
