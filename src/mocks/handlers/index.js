@@ -28,7 +28,7 @@ export const handlers = [
       const filteredStudent = db.student.findFirst({
         where: {
           id: {
-            equals: req.params.id,
+            in: req.params.id,
           },
         },
       });
@@ -39,7 +39,8 @@ export const handlers = [
   }),
 
   rest.post('/students/search', (req, res, ctx) => {
-    const matchingStudents = req.body.searchPhrase ? students.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase())) : [];
+    const allStudents = db.student.getAll();
+    const matchingStudents = allStudents.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase()));
     return res(ctx.status(200), ctx.json({ students: matchingStudents }));
   }),
 ];

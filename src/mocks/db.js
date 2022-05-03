@@ -31,4 +31,10 @@ export const db = factory({
       },
     ],
   },
+  teacher: {
+    id: primaryKey(() => 1),
+    name: () => 'Janina Rułka',
+    login: () => 'janina@wp.pl',
+    password: 'Test123',
+  },
 });
