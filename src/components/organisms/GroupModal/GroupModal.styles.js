@@ -9,6 +9,7 @@ export const StyledWrapper = styled.div`
   justify-content: center;
   gap: 2rem;
   padding: 1rem 2rem;
+  background-color: ${({ theme }) => theme.colors.white};
   & > * {
     margin: 0;
   }

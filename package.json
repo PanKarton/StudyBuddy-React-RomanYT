@@ -45,6 +45,8 @@
     }
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.3.0",
+    "@mswjs/data": "^0.10.0",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -61,6 +63,7 @@
     "axios-mock-adapter": "^1.20.0",
     "downshift": "^6.1.7",
     "eslint-config-prettier": "^8.5.0",
+    "faker": "^5.5.3",
     "msw": "^0.39.2",
     "node-sass": "^7.0.1",
     "prettier": "^2.6.1",

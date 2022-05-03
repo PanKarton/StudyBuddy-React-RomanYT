@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 import { students } from 'mocks/data/students';
 import { groups } from 'mocks/data/groups';
+import { db } from 'mocks/db';
 
 export const handlers = [
   rest.get('/groups', (req, res, ctx) => {
@@ -9,7 +10,13 @@ export const handlers = [
 
   rest.get('/groups/:id?', (req, res, ctx) => {
     if (req.params.id) {
-      const filteredStudents = students.filter((student) => student.group === req.params.id);
+      const filteredStudents = db.student.findMany({
+        where: {
+          group: {
+            equals: req.params.id,
+          },
+        },
+      });
       if (filteredStudents === 0) return;
       return res(ctx.status(200), ctx.json({ students: filteredStudents }));
     }
@@ -18,7 +25,13 @@ export const handlers = [
 
   rest.get('/students/:id?', (req, res, ctx) => {
     if (req.params.id) {
-      const filteredStudent = students.find((student) => student.id === req.params.id);
+      const filteredStudent = db.student.findFirst({
+        where: {
+          id: {
+            in: req.params.id,
+          },
+        },
+      });
       if (!filteredStudent) return;
       return res(ctx.status(200), ctx.json({ student: filteredStudent }));
     }
@@ -26,7 +39,8 @@ export const handlers = [
   }),
 
   rest.post('/students/search', (req, res, ctx) => {
-    const matchingStudents = req.body.searchPhrase ? students.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase())) : [];
+    const allStudents = db.student.getAll();
+    const matchingStudents = allStudents.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase()));
     return res(ctx.status(200), ctx.json({ students: matchingStudents }));
   }),
 ];

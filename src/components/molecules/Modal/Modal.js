@@ -6,7 +6,7 @@ ModalWrapper.setAppElement(document.getElementById('root'));
 
 const Modal = ({ children, isOpen, handleModalClose }) => {
   return (
-    <ModalWrapper isOpen={isOpen} onRequestClose={handleModalClose}>
+    <ModalWrapper isOpen={isOpen} onRequestClose={handleModalClose} style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.25)' } }}>
       {children}
     </ModalWrapper>
   );
