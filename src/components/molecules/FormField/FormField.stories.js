@@ -1,4 +1,4 @@
-import UserValueInput from './UserValueInput';
+import UserValueInput from './FormField';
 
 export default {
   title: 'Components/Molecules/UserValueInput',

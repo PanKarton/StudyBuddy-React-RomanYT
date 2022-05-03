@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ViewWrapper } from 'components/atoms/ViewWrapper/ViewWrapper';
-import UserValueInput from 'components/molecules/UserValueInput/UserValueInput';
+import UserValueInput from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { StyledTitle } from 'components/atoms/Title/Title';
 
