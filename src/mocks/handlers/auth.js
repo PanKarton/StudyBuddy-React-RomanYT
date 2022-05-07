@@ -1,4 +1,5 @@
 import { db } from 'mocks/db';
+import { isAutenticated } from 'mocks/helpers';
 import { rest } from 'msw';
 
 const sanitizeUser = (user) => {
@@ -24,5 +25,7 @@ export const auth = [
 
   rest.get('/me', (req, res, ctx) => {
     if (!isAutenticated(req)) return res(ctx.status(401), ctx.json({ error: 'Sorry buddy, you are not who you claim to be ;///' }));
+    const [user] = db.teacher.getAll();
+    return res(ctx.status(200), ctx.json({ user }));
   }),
 ];

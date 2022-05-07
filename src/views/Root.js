@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
@@ -46,10 +46,25 @@ const Root = () => {
   const [user, setUser] = useState(null);
   const [loginError, setLogintError] = useState('');
 
+  useEffect(() => {
+    (async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const response = await axios.get('/me', {
+        headers: {
+          autentication: `Bearer ${token}`,
+        },
+      });
+      setUser(response.data.user);
+    })();
+  }, []);
+
   const handleAuthorizeUser = async ({ login, password }) => {
     const response = await axios.post('/login', { login, password });
     if (response.data.error) return setLogintError(response.data.error);
+    console.log(response.data);
     setUser(response.data);
+    localStorage.setItem('token', response.data.token);
   };
 
   return (

@@ -14,7 +14,9 @@ const Nav = () => {
         <StyledLink to={`/group/${actualGroup}`}>Dashboard</StyledLink>
         <StyledLink to="/addStudent">Add student</StyledLink>
         <StyledLink to="/asdasd">Settings</StyledLink>
-        <StyledLink to="/gdfg">Logout</StyledLink>
+        <StyledLink as={'a'} onClick={() => localStorage.removeItem('token')}>
+          Logout
+        </StyledLink>
       </StyledList>
     </StyledNav>
   );
