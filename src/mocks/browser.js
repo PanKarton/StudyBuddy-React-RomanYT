@@ -11,3 +11,5 @@ const createStudents = (number) => {
 };
 
 createStudents(25);
+
+db.teacher.create();
