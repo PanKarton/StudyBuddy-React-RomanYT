@@ -33,6 +33,7 @@ export const StyledLink = styled(NavLink)`
   font-weight: 700;
   text-decoration: none;
   position: relative;
+  cursor: pointer;
 
   &::after {
     opacity: 0;
