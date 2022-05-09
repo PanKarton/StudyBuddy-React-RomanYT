@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
-import Root from 'views/Root';
+import Root from 'views/Root/Root';
 import { worker } from 'mocks/browser';
 import AppProviders from 'providers/AppProviders';
 
