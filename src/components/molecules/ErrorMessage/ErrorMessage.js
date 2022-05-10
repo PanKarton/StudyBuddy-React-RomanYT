@@ -43,7 +43,7 @@ const ErrorWindow = styled.div`
   align-items: flex-start;
   padding-inline: 2rem;
   gap: 1rem;
-  animation: ${slideAnimation} 0.5s ease-in;
+  animation: ${slideAnimation} 0.5s ease-in, ${slideAnimation} 0.5s 6s reverse forwards;
 
   ${StyledTitle}, p {
     margin: 0;
@@ -74,7 +74,7 @@ const ErrorWindow = styled.div`
   &::after {
     background-color: red;
     transform-origin: left center;
-    animation: ${shrinkAnimation} 5s 1s linear;
+    animation: ${shrinkAnimation} 5s 1s linear forwards;
   }
 `;
 
