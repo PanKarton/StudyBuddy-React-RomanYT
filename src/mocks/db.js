@@ -35,6 +35,6 @@ export const db = factory({
     id: primaryKey(() => 1),
     name: () => 'Janina Rułka',
     login: () => 'janina@wp.pl',
-    password: 'Test123',
+    password: () => 'Test123',
   },
 });

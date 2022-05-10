@@ -16,8 +16,6 @@ const Dashboard = () => {
   const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
 
   useEffect(() => {
-    // Get groups i get students pochodzą z hooka useStudents, który ma w sobie funkcje zwracajace promisa
-    // z danymi
     (async () => {
       const data = await getGroups();
       setGroups(data);
