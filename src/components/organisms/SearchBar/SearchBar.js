@@ -15,7 +15,7 @@ const SearchBar = () => {
   const getMatchingStudents = debounce(async ({ inputValue }) => {
     const { students } = await findStudents(inputValue);
     setMatchingStudents(students);
-  }, 500);
+  }, 250);
 
   const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
     items: matchingStudents,
