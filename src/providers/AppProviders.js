@@ -16,11 +16,11 @@ const AppProviders = ({ children }) => {
         <Helmet>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
         </Helmet>
-        <ActualGroupProvier>
-          <AuthProvider>
-            <ErrorProvider>{children}</ErrorProvider>
-          </AuthProvider>
-        </ActualGroupProvier>
+        <ErrorProvider>
+          <ActualGroupProvier>
+            <AuthProvider>{children}</AuthProvider>
+          </ActualGroupProvier>
+        </ErrorProvider>
       </ThemeProvider>
     </Router>
   );

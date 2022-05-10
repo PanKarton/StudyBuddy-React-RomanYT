@@ -20,12 +20,12 @@ to{
 `;
 
 export const Wrapper = styled.div`
-  position: fixed;
-  inset: 0;
+  /* position: fixed; */
+  /* inset: 0; */
 `;
 
 export const ErrorWindow = styled.div`
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 10%;
   transform: translateX(-50%);

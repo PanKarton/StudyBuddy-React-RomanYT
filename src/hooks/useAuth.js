@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { Children, useContext, useEffect, useState } from 'react';
-
+import React, { useContext, useEffect, useState } from 'react';
+import { useError } from 'hooks/useError';
 const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const { dispatchError } = useError();
 
   useEffect(() => {
     (async () => {
@@ -29,7 +30,10 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
     } catch (e) {
-      console.log(e);
+      dispatchError(`Invalid login or password, please note it somewhere for nex time... `);
+      setTimeout(() => {
+        dispatchError(null);
+      }, 6500);
     }
   };
 
@@ -44,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const auth = useContext(AuthContext);
 
-  if (!auth) throw Error('useAuth needs to be used inside AuthContext, not outside');
+  if (Object.keys(auth) === 0) throw Error('useAuth needs to be used inside AuthContext, not outside');
 
   return auth;
 };

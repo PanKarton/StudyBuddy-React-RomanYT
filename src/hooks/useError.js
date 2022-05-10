@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react';
 
-const ErrorContext = React.createContext({});
+export const ErrorContext = React.createContext({});
 
 export const ErrorProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -11,9 +11,9 @@ export const ErrorProvider = ({ children }) => {
 };
 
 export const useError = () => {
-  const errorContext = useContext(ErrorContext);
+  const error = useContext(ErrorContext);
+  console.log(error);
+  if (!error) throw Error('useError should be used inside ErrorContext.Provider');
 
-  if (!errorContext) throw Error('useError should be used inside ErrorContext.Provider');
-
-  return errorContext;
+  return error;
 };
