@@ -7,7 +7,7 @@ import { theme } from 'assets/styles/theme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from 'hooks/useAuth';
 
-const AppProvider = ({ children }) => {
+const AppProviders = ({ children }) => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -23,4 +23,4 @@ const AppProvider = ({ children }) => {
   );
 };
 
-export default AppProvider;
+export default AppProviders;

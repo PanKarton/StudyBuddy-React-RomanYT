@@ -8,14 +8,18 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-      const response = await axios.get('/me', {
-        headers: {
-          autentication: `Bearer ${token}`,
-        },
-      });
-      setUser(response.data.user);
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        const response = await axios.get('/me', {
+          headers: {
+            autentication: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data.user);
+      } catch (e) {
+        console.log(e);
+      }
     })();
   }, []);
 

@@ -10,8 +10,6 @@ const initialState = {
   average: '',
 };
 
-const a = 2;
-
 const AddUser = () => {
   const [newUserInputData, setNewUserInputData] = useState(initialState);
   const { name, attendance, average } = newUserInputData;

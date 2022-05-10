@@ -11,5 +11,8 @@ const createStudents = (number) => {
 };
 
 createStudents(25);
+db.student.create({
+  name: 'Miriamcia',
+});
 
 db.teacher.create();
