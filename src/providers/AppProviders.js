@@ -1,5 +1,5 @@
 import React from 'react';
-import ActualGroupProvier from './ActualGroupProvider';
+import { ActualGroupProvider } from 'hooks/useActualGroup';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { Helmet } from 'react-helmet';
@@ -17,9 +17,9 @@ const AppProviders = ({ children }) => {
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
         </Helmet>
         <ErrorProvider>
-          <ActualGroupProvier>
+          <ActualGroupProvider>
             <AuthProvider>{children}</AuthProvider>
-          </ActualGroupProvier>
+          </ActualGroupProvider>
         </ErrorProvider>
       </ThemeProvider>
     </Router>

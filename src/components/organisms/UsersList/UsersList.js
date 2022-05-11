@@ -3,15 +3,15 @@ import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { StyledList } from './UsersList.styles';
 import { StyledTitle } from 'components/atoms/Title/Title';
 import { useParams } from 'react-router-dom';
-import { GroupContext } from 'providers/ActualGroupProvider';
 import { useStudents } from 'hooks/useStudents';
 import { useModal } from 'hooks/useModal';
 import StudentInfoModal from '../StudentInfoModal/StudentInfoModal';
 import Modal from 'components/molecules/Modal/Modal';
+import { ActualGroupContext } from 'hooks/useActualGroup';
 
 const UsersList = () => {
   const [students, setStudents] = useState([]);
-  const { handleGroupChange } = useContext(GroupContext);
+  const group = useContext(ActualGroupContext);
   const { groupID } = useParams();
   const { getStudents, getStudentByID } = useStudents();
   const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
@@ -26,11 +26,11 @@ const UsersList = () => {
         console.log(err);
       }
     })();
-    handleGroupChange(groupID);
+    group.changeActualGroup(groupID);
     return () => {
       setStudents([]);
     };
-  }, [groupID, handleGroupChange, getStudents]);
+  }, [groupID, group, getStudents]);
 
   const handleUserClick = async (id) => {
     const studentInfo = await getStudentByID(id);
