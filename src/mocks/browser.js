@@ -4,15 +4,16 @@ import { handlers } from './handlers';
 
 export const worker = setupWorker(...handlers);
 
-const createStudents = (number) => {
-  for (let i = 0; i < number; i++) {
+const seed = () => {
+  for (let i = 0; i < 25; i++) {
     db.student.create();
   }
+
+  db.student.create({
+    name: 'Miriamcia',
+  });
+
+  db.teacher.create();
 };
 
-createStudents(25);
-db.student.create({
-  name: 'Miriamcia',
-});
-
-db.teacher.create();
+seed();

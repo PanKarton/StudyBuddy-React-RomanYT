@@ -19,17 +19,17 @@ export const AuthProvider = ({ children }) => {
         });
         setUser(response.data.user);
       } catch (e) {
-        console.log(e);
+        dispatchError(`xD czesc`);
       }
     })();
-  }, []);
+  }, [dispatchError]);
 
   const signIn = async ({ login, password }) => {
     try {
       const response = await axios.post('/login', { login, password });
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
-    } catch (e) {
+    } catch (err) {
       dispatchError(`Invalid login or password, please note it somewhere for nex time... `);
       setTimeout(() => {
         dispatchError(null);

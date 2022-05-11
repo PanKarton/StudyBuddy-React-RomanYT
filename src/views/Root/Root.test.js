@@ -1,35 +1,43 @@
-// import { render, fireEvent, screen, waitFor } from 'test-utils';
-// import Root from './Root';
-// import { setupServer } from 'msw/node';
-// import { handlers } from 'mocks/handlers';
-// import 'jest-environment-jsdom';
-// import { findByLabelText } from '@testing-library/dom';
+import { render, fireEvent, screen, waitFor } from 'test-utils';
+import Root from './Root';
+import 'jest-environment-jsdom';
 
-// const server = setupServer(...handlers);
+describe('Root component with authorization', () => {
+  it('Properly renders logIn screen', () => {
+    render(<Root />);
+    screen.getAllByLabelText('login');
+    screen.getAllByLabelText('password');
+  });
 
-// describe('Root component with authorization', () => {
-//   beforeAll(() => server.listen());
-//   afterEach(() => server.resetHandlers());
-//   afterAll(() => server.close());
+  it(`Doesn't authorize when user doesnt exist`, async () => {
+    render(<Root />);
+    const loginInput = screen.getByLabelText('login');
+    const passwordinput = screen.getByLabelText('password');
 
-//   it('Properly renders logIn screen', () => {
-//     render(<Root />);
-//     screen.getAllByLabelText('login');
-//     screen.getAllByLabelText('password');
-//   });
+    fireEvent.change(loginInput, { target: { value: 'jp2gmd@wp.pl' } });
+    fireEvent.change(passwordinput, { target: { value: 'asdad' } });
 
-//   // it(`Doesn't authorize when user doesnt exist`, async () => {
-//     render(<Root />);
-//     const loginInput = screen.getByLabelText('login');
-//     const passwordinput = screen.getByLabelText('password');
+    const signInButton = screen.getByText('Log in');
+    fireEvent.click(signInButton);
 
-//     fireEvent.change(loginInput, { target: { value: 'jp2gmd@wp.pl' } });
-//     fireEvent.change(passwordinput, { target: { value: 'asdad' } });
+    await waitFor(() => {
+      screen.getByText(/Ooops!/);
+    });
+  });
 
-//     const signInButton = screen.getByText('Log in');
-//     console.log(signInButton);
-//     await fireEvent.click(signInButton);
-//     expect(screen.getByLabelText('login')).not.toBeNull();
-//     // screen.getAllByLabelText('login');
-//   });
-// });
+  it(`Authorizes and displays app when login and password are correct`, async () => {
+    render(<Root />);
+    const loginInput = screen.getByLabelText('login');
+    const passwordinput = screen.getByLabelText('password');
+
+    fireEvent.change(loginInput, { target: { value: 'janina@wp.pl' } });
+    fireEvent.change(passwordinput, { target: { value: 'Test123' } });
+
+    const signInButton = screen.getByText('Log in');
+    fireEvent.click(signInButton);
+
+    await waitFor(() => {
+      screen.getByText(/Logged as:/);
+    });
+  });
+});

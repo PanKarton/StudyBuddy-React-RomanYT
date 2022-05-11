@@ -29,7 +29,7 @@ export const useStudents = () => {
     try {
       const response = await studentsAPI.get(`/groups`);
       return response.data.groups;
-    } catch (err) {
+    } catch {
       dispatchError(`Couldn't load groups... try something else.`);
     }
   }, [dispatchError]);
@@ -38,7 +38,7 @@ export const useStudents = () => {
       try {
         const response = await studentsAPI.get(`/groups/${groupID}`);
         return response.data.students;
-      } catch (err) {
+      } catch {
         dispatchError(`Couldn't load students. Try something else.`);
       }
     },
@@ -49,7 +49,7 @@ export const useStudents = () => {
       try {
         const response = await studentsAPI.get(`/students/${studentID}`);
         return response.data.student;
-      } catch (err) {
+      } catch {
         dispatchError(`Couldn't load student's data. Try something else.`);
       }
     },
@@ -61,7 +61,7 @@ export const useStudents = () => {
         searchPhrase,
       });
       return data;
-    } catch (err) {
+    } catch {
       dispatchError(`Couldn't search students. Try something else.`);
     }
   };

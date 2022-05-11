@@ -1,7 +1,6 @@
 import React from 'react';
 import AddUser from './AddUserForm';
 import Dashboard from '../Dashboard/Dashboard';
-import { renderWithProviders } from 'helpers/RenderWithProviders';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 

@@ -12,7 +12,6 @@ export const ErrorProvider = ({ children }) => {
 
 export const useError = () => {
   const error = useContext(ErrorContext);
-  console.log(error);
   if (!error) throw Error('useError should be used inside ErrorContext.Provider');
 
   return error;

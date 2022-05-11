@@ -20,6 +20,7 @@ export const students = [
 
   rest.post('/students/search', (req, res, ctx) => {
     const allStudents = db.student.getAll();
+    if (!req.body.searchPhrase) return res(ctx.status(200), ctx.json({ students: [] }));
     const matchingStudents = allStudents.filter((student) => student.name.toLowerCase().includes(req.body.searchPhrase.toLowerCase()));
     return res(ctx.status(200), ctx.json({ students: matchingStudents }));
   }),
