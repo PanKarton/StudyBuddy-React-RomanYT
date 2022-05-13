@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.section`
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -8,5 +9,5 @@ export const StyledWrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.lightGrey};
   grid-column: 1/2;
   grid-row: 2/3;
-  padding-left: 11rem;
+  border: 1px solid red;
 `;

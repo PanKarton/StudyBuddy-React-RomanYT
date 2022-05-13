@@ -15,7 +15,7 @@ const Nav = () => {
       </MainLogo>
       <StyledList>
         <StyledLink to={`/group/${group.actualGroup}`}>Dashboard</StyledLink>
-        <StyledLink to="/addStudent">Add student</StyledLink>
+        <StyledLink to="/notes">Notes</StyledLink>
         <StyledLink to="/asdasd">Settings</StyledLink>
         <StyledLink as={'a'} onClick={signOut}>
           Logout
