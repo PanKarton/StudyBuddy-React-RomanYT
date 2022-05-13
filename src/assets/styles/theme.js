@@ -14,7 +14,8 @@ export const theme = {
     mainLineColor: '#DFE2E8',
   },
   fontSize: {
-    xxl: '30px',
+    xxxl: '30px',
+    xxl: '25px',
     xl: '20px',
     l: '17px',
     xm: '15px',

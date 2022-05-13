@@ -9,5 +9,4 @@ export const StyledWrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.lightGrey};
   grid-column: 1/2;
   grid-row: 2/3;
-  border: 1px solid red;
 `;
