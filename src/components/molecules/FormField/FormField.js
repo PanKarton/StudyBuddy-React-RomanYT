@@ -6,7 +6,6 @@ import { StyledWrapper } from './FormField.styles';
 
 const FormField = React.forwardRef(({ label, name, id, type = 'text', value, handleInputChange, isTextarea, ...props }, ref) => (
   <StyledWrapper>
-    {console.log('Type of input', type)}
     <Label htmlFor={id}>{label}</Label>
     {isTextarea ? (
       <textarea name={name} id={id} type={type} value={value} onChange={handleInputChange} {...props} ref={ref} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import Note from 'components/atoms/Note/Note';
-import { AddNoteWrapper, NotesList, Wrapper } from './Notes.styles';
+import { NotesList, Wrapper } from './Notes.styles';
 import AddNoteForm from 'components/organisms/AddNoteForm/AddNoteForm';
 
 const Notes = (props) => {
