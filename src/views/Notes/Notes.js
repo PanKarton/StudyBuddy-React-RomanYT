@@ -2,18 +2,16 @@ import React from 'react';
 import Note from 'components/atoms/Note/Note';
 import { NotesList, Wrapper } from './Notes.styles';
 import AddNoteForm from 'components/organisms/AddNoteForm/AddNoteForm';
+import { useSelector } from 'react-redux';
 
 const Notes = (props) => {
+  const notes = useSelector((state) => state.notes);
+
   return (
     <Wrapper>
       <h3>Notes</h3>
       <AddNoteForm />
-      <NotesList>
-        <Note title="Czesc jestem jaś" content="Sorry mała ale musze wczesnie wstac" />
-        <Note title="Czesc jestem jaś" content="Sorry mała ale musze wczesnie wstac" />
-        <Note title="Czesc jestem jaś" content="Sorry mała ale musze wczesnie wstac" />
-        <Note title="Czesc jestem jaś" content="Sorry mała ale musze wczesnie wstac" />
-      </NotesList>
+      <NotesList>{notes ? notes.map(({ title, content, id }) => <Note key={id} id={id} title={title} content={content} />) : <p>You got no notes, create some dude...</p>}</NotesList>
     </Wrapper>
   );
 };

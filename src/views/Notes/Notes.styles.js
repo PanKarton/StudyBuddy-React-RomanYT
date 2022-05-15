@@ -14,6 +14,8 @@ export const NotesList = styled.ul`
   grid-row: 2/3;
   margin: 0;
   padding: 0;
+  max-height: 70vh;
+  overflow-y: scroll;
   & > * + * {
     margin-top: 1.5rem;
   }

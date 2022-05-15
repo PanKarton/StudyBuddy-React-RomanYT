@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: grid;
+  grid-template-rows: max(1.75rem, auto) 1fr;
   grid-template-columns: 1.75rem 1fr;
-  grid-template-rows: 1.75rem 1fr;
-  column-gap: 0.5rem;
+  column-gap: 1rem;
   row-gap: 0.5rem;
-
   h4,
   p {
     color: ${({ theme }) => theme.colors.darkGrey};
