@@ -1,9 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useStudents } from 'hooks/useStudents';
 
 export const ActualGroupContext = React.createContext({});
 
 export const ActualGroupProvider = ({ children }) => {
   const [actualGroup, setActualGroup] = useState(null);
+  const { getGroups } = useStudents();
+
+  useEffect(() => {
+    (async () => {
+      const data = await getGroups();
+      setActualGroup(data[0]);
+    })();
+  }, []);
 
   const changeActualGroup = (group) => setActualGroup(group);
 

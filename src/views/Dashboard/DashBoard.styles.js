@@ -21,6 +21,7 @@ export const MainContainer = styled.div`
   align-items: flex-start;
   gap: 1rem;
   width: min(30rem, 100%);
+  margin-left: 11rem;
 `;
 
 export const GroupButton = styled(Button)`
