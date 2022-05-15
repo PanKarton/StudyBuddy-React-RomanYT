@@ -8,12 +8,14 @@ import GroupModal from 'components/organisms/GroupModal/GroupModal';
 import { useStudents } from 'hooks/useStudents';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/molecules/Modal/Modal';
+import { useActualGroup } from 'hooks/useActualGroup';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const { groupID } = useParams();
   const { getGroups } = useStudents();
   const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
+  const { changeActualGroup } = useActualGroup();
 
   useEffect(() => {
     (async () => {
@@ -22,7 +24,10 @@ const Dashboard = () => {
     })();
   }, [getGroups]);
 
-  if (!groupID && groups.length > 0) return <Navigate to={`/group/${groups[0]}`} replace />;
+  if (!groupID && groups.length > 0) {
+    changeActualGroup(groups[0]);
+    return <Navigate to={`/group/${groups[0]}`} replace />;
+  }
 
   return (
     <>

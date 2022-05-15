@@ -37,4 +37,4 @@ const notesReducer = (state = initialState, action) => {
   }
 };
 
-export const store = createStore(notesReducer);
+export const store = createStore(notesReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

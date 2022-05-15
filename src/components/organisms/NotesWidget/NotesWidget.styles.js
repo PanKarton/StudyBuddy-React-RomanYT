@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   border: 3px solid ${({ theme }) => theme.colors.darkGrey};
   border-right: none;
   width: 30vw;
+  min-height: 11vh;
   transition: transform 0.2s ease-in-out;
   &.active {
     transform: translateX(-100%);
