@@ -2,16 +2,15 @@ import React from 'react';
 import { StyledWrapper } from './Root.styles';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import AddUser from '../AddUserForm/AddUserForm';
 import Dashboard from '../Dashboard/Dashboard';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { useForm } from 'react-hook-form';
 import { useAuth } from 'hooks/useAuth';
-import { useError } from 'hooks/useError';
 import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
 import Notes from 'views/Notes/Notes';
 import Noteswidget from 'components/organisms/NotesWidget/NotesWidget';
+import { useSelector } from 'react-redux';
 
 const AuthenticatedApp = () => {
   return (
@@ -46,7 +45,8 @@ const UnauthenticatedApp = () => {
 
 const Root = () => {
   const { user } = useAuth();
-  const { errorMessage } = useError();
+  const errorMessage = useSelector((store) => store.error);
+  // const { errorMessage } = useError();
   return (
     <>
       {errorMessage ? <ErrorMessage message={errorMessage} /> : null}

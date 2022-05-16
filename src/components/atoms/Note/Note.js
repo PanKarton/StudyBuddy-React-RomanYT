@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CircleButton from '../CircleButton/CircleButton';
 import { Wrapper } from './Note.styles';
 import { useDispatch } from 'react-redux';
-import { removeNote } from 'store';
+import { removeNote } from 'store/features/notes/notesSlice';
 
 const Note = ({ title = 'No title provided', content = 'No content provided', id }) => {
   const dispatch = useDispatch();
