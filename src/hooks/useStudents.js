@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useCallback } from 'react';
-import { useError } from './useError';
+import { useDispatch } from 'react-redux';
+import { setErrorMessage } from 'store/features/error/errorSlice';
 
 const studentsAPI = axios.create({});
 
@@ -23,26 +24,26 @@ export const useStudents = () => {
   // Bez useCallback komponent renderując się wchodziłby do tego pliczku i za każdym razem
   // zwracał nową funkcję, co by odpalało useEffect i tak w koło macieju
 
-  const { dispatchError } = useError();
+  const dispatch = useDispatch();
 
   const getGroups = useCallback(async () => {
     try {
       const response = await studentsAPI.get(`/groups`);
       return response.data.groups;
     } catch {
-      dispatchError(`Couldn't load groups... try something else.`);
+      dispatch(setErrorMessage(`Couldn't load groups... try something else.`));
     }
-  }, [dispatchError]);
+  }, [dispatch]);
   const getStudents = useCallback(
     async (groupID) => {
       try {
         const response = await studentsAPI.get(`/groups/${groupID}`);
         return response.data.students;
       } catch {
-        dispatchError(`Couldn't load students. Try something else.`);
+        dispatch(setErrorMessage(`Couldn't load students. Try something else.`));
       }
     },
-    [dispatchError],
+    [dispatch],
   );
   const getStudentByID = useCallback(
     async (studentID) => {
@@ -50,10 +51,10 @@ export const useStudents = () => {
         const response = await studentsAPI.get(`/students/${studentID}`);
         return response.data.student;
       } catch {
-        dispatchError(`Couldn't load student's data. Try something else.`);
+        dispatch(setErrorMessage(`Couldn't load student's data. Try something else.`));
       }
     },
-    [dispatchError],
+    [dispatch],
   );
   const findStudents = async (searchPhrase) => {
     try {
@@ -62,7 +63,7 @@ export const useStudents = () => {
       });
       return data;
     } catch {
-      dispatchError(`Couldn't search students. Try something else.`);
+      dispatch(setErrorMessage(`Couldn't search students. Try something else.`));
     }
   };
 

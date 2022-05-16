@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useError } from 'hooks/useError';
+import { useDispatch } from 'react-redux';
+import { setErrorMessage } from 'store/features/error/errorSlice';
 const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const { dispatchError } = useError();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
@@ -19,10 +20,10 @@ export const AuthProvider = ({ children }) => {
         });
         setUser(response.data.user);
       } catch (e) {
-        dispatchError(`xD czesc`);
+        dispatch(setErrorMessage(`xD czesc`));
       }
     })();
-  }, [dispatchError]);
+  }, [dispatch]);
 
   const signIn = async ({ login, password }) => {
     try {
@@ -30,9 +31,9 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
       localStorage.setItem('token', response.data.token);
     } catch (err) {
-      dispatchError(`Invalid login or password, please note it somewhere for nex time... `);
+      dispatch(setErrorMessage(`Invalid login or password, please note it somewhere for nex time... `));
       setTimeout(() => {
-        dispatchError(null);
+        dispatch(setErrorMessage(''));
       }, 6500);
     }
   };

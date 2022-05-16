@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { FormWrapper } from './AddNoteForm.styles';
 import { useDispatch } from 'react-redux';
-import { addNote } from 'store';
+import { addNote } from 'store/features/notes/notesSlice';
 
-const AddNoteForm = (props) => {
+const AddNoteForm = () => {
   const {
     register,
     handleSubmit,
@@ -40,7 +39,5 @@ const AddNoteForm = (props) => {
     </FormWrapper>
   );
 };
-
-AddNoteForm.propTypes = {};
 
 export default AddNoteForm;
